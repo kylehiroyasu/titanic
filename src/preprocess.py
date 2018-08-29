@@ -8,4 +8,9 @@ def parse_first_cabin_letter(cabin):
     else: 
         return false
 
-    
+def parse_alphabetic_characters(ticket):
+    if isinstance(ticket, str):
+        alphas = [character for character in ticket if character.isalpha()]
+    else:
+        alphas = []
+    return ''.join(alphas)
