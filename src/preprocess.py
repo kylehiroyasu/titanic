@@ -14,3 +14,12 @@ def parse_alphabetic_characters(ticket):
     else:
         alphas = []
     return ''.join(alphas)
+
+def parse_period_prefixes_to_list(text):
+    if isinstance(text, str):
+        words = text.split()
+        prefixes = [word.lower() for word in words if '.' in word]
+        prefixes = [prefix.split('.')[0] for prefix in  prefixes]
+    else:
+        prefixes = []
+    return prefixes

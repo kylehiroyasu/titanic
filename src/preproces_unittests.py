@@ -21,6 +21,21 @@ class TestPreprocess(unittest.TestCase):
         
     def test_parse_alphabetic_characters_from_none(self):
         self.assertEqual(preprocess.parse_alphabetic_characters(None), '')
+    
+    def test_period_prefix_is_mr(self):
+        self.assertEqual(preprocess.parse_period_prefixes_to_list('mr.hemmingway'), ['mr'])
         
+    def test_period_prefix_is_mr_and_ms(self):
+        self.assertEqual(preprocess.parse_period_prefixes_to_list('mr.hemmingway and ms.hemmingway'), ['mr', 'ms'])
+        
+    def test_period_prefix_is_empty(self):
+        self.assertEqual(preprocess.parse_period_prefixes_to_list('mrhemmingway'), [])
+
+    def test_period_prefix_is_leading_space(self):
+        self.assertEqual(preprocess.parse_period_prefixes_to_list(' mr.hemmingway'), ['mr'])
+
+    def test_period_prefix_is_none(self):
+        self.assertEqual(preprocess.parse_period_prefixes_to_list(None), [])
+    
 if __name__ == '__main__':
     unittest.main()      
